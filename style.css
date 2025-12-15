@@ -1,0 +1,268 @@
+:root {
+  --bg-color: #ffffff;
+  --card-bg: #ffffff;
+  --text-primary: #111111;
+  --text-secondary: #666666;
+  --text-tertiary: #888888;
+  --border-color: #e5e5e5;
+  --active-filter-bg: #111111;
+  --active-filter-text: #ffffff;
+  --hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-stack);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* MAIN CONTENT WRAPPER */
+main {
+  flex: 1;
+  width: 100%;
+}
+
+header {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+
+p.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* FILTER COMPONENT STYLES */
+.filter-container {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 4px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-container::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.filter-btn:hover {
+  border-color: #b0b0b0;
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  background-color: var(--active-filter-bg);
+  color: var(--active-filter-text);
+  border-color: var(--active-filter-bg);
+}
+
+/* GRID STYLES */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative; /* Needed for absolute positioning of card-action */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+  border-color: #d1d1d1;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: auto;
+}
+
+.card-action {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: var(--text-tertiary);
+  transition: all 0.3s ease;
+  margin-top: 0;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.card:hover .card-action {
+  color: var(--text-primary);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FOOTER STYLES */
+footer {
+  margin-top: 80px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  padding: 20px 0;
+  border-top: 1px solid transparent;
+  /* Keeps spacing consistent */
+}
+
+footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--text-primary);
+  border-bottom-color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-container {
+    justify-content: flex-start;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* CHECKLIST STYLES */
+.checklist-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.city-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.city-link {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.city-link:hover {
+  background-color: #fafafa;
+  padding-left: 25px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  margin-right: 15px;
+  transition: all 0.2s ease;
+}
+
+.city-link:hover .checkbox {
+  border-color: var(--active-filter-bg);
+}
+
+.city-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* BACK LINK STYLES */
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+}
