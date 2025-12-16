@@ -16,43 +16,81 @@
             <p class="subtitle">Places to explore</p>
         </header>
 
-        <ul class="city-list">
-            <li>
-                <a href="cities/kochi.html" class="city-link">
-                    <span class="checkbox"></span>
-                    <span class="city-name">Kochi</span>
-                </a>
-            </li>
-            <li>
-                <a href="cities/udaipur.html" class="city-link">
-                    <span class="checkbox"></span>
-                    <span class="city-name">Udaipur</span>
-                </a>
-            </li>
-            <li>
-                <a href="cities/jaisalmer.html" class="city-link">
-                    <span class="checkbox"></span>
-                    <span class="city-name">Jaisalmer</span>
-                </a>
-            </li>
-            <li>
-                <a href="cities/shillong.html" class="city-link">
-                    <span class="checkbox"></span>
-                    <span class="city-name">Shillong</span>
-                </a>
-            </li>
-            <li>
-                <a href="cities/gangtok.html" class="city-link">
-                    <span class="checkbox"></span>
-                    <span class="city-name">Gangtok</span>
-                </a>
-            </li>
+        <!-- Admin Only: Add City -->
+        <div class="add-city-form">
+            <input type="text" id="newCityName" placeholder="City Name (e.g. Paris)">
+            <button id="addCityBtn" class="btn-primary">Add City</button>
+        </div>
+
+        <ul class="city-list" id="cityList">
+            <!-- Cities will be loaded here dynamically -->
+            <li>Loading...</li>
         </ul>
     </main>
 
     <footer>
         pet project of <a href="https://x.com/0xSarthak" target="_blank" rel="noopener noreferrer">sarthak</a>
     </footer>
+
+    <!-- Main Logic Script -->
+    <script type="module">
+        import { supabase } from "./cities/supabaseClient.js";
+        import { initAdminMode } from "./admin/admin.js";
+
+        const cityList = document.getElementById("cityList");
+
+        async function loadCities() {
+            const { data: cities, error } = await supabase
+                .from('cities')
+                .select('*')
+                .order('name');
+
+            if (error) {
+                console.error("Error loading cities:", error);
+                cityList.innerHTML = "<li>Error loading cities.</li>";
+                return;
+            }
+
+            cityList.innerHTML = "";
+            cities.forEach(city => {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                    <a href="cities/city.html?id=${encodeURIComponent(city.slug)}" class="city-link">
+                        <span class="checkbox"></span>
+                        <span class="city-name">${city.name}</span>
+                    </a>
+                `;
+                cityList.appendChild(li);
+            });
+        }
+
+        // Initialize Admin toggle
+        initAdminMode();
+
+        // Add City Logic
+        document.getElementById("addCityBtn").addEventListener("click", async () => {
+            const name = document.getElementById("newCityName").value;
+            if (!name) return alert("Enter a city name");
+
+            // Simple slug generation: "New York" -> "New York" (kept same for simplicity as requested, or simple sanitize)
+            // Using ID or Name as slug. Let's use Name as Slug for URL readability as per existing files.
+            const slug = name; 
+
+            const { error } = await supabase
+                .from('cities')
+                .insert([{ name: name, slug: slug }]);
+
+            if (error) {
+                alert("Error adding city: " + error.message);
+            } else {
+                document.getElementById("newCityName").value = "";
+                loadCities(); // Refresh list
+            }
+        });
+
+        // Initial Load
+        loadCities();
+    </script>
 
 </body>
 </html>

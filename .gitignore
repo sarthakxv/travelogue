@@ -1,2 +1,3 @@
 cities/config.js
 .DS_Store
+.env

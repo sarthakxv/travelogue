@@ -266,3 +266,188 @@ footer a:hover {
 .back-link:hover {
   color: var(--text-primary);
 }
+
+/* --- ADMIN UI (Minimal Design) --- */
+
+/* Toggle Button */
+.admin-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.admin-mode .admin-toggle-btn {
+  background: var(--text-primary);
+  color: white;
+  border-color: var(--text-primary);
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  border: 1px solid var(--border-color);
+}
+.modal h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.modal p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+/* Admin Forms & Buttons */
+.modal input, .modal select, .modal textarea, .add-city-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+  background: #fafafa;
+}
+.modal input:focus, .modal select:focus, .modal textarea:focus {
+  border-color: var(--text-primary);
+  background: white;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Primary Button (Black) */
+.btn-primary {
+  background: var(--text-primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform 0.1s;
+}
+.btn-primary:active { transform: scale(0.98); }
+
+/* Secondary Button (Ghost) */
+.btn-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.btn-secondary:hover { color: var(--text-primary); }
+
+/* Danger Button (Red) */
+.btn-danger {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.btn-danger:hover { background: #fecaca; }
+
+/* Add City Form (Index) */
+.add-city-form {
+    display: none;
+    margin: 0 auto 40px auto;
+    max-width: 600px;
+    gap: 12px;
+}
+.admin-mode .add-city-form {
+    display: flex;
+}
+
+/* Add Place Card */
+.add-card {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--border-color);
+    background: transparent;
+    transition: all 0.2s;
+}
+.add-card:hover {
+    border-color: var(--text-secondary);
+    background: #fafafa;
+}
+.admin-mode .add-card { display: flex; }
+.add-icon { font-size: 32px; color: var(--border-color); }
+.add-card:hover .add-icon { color: var(--text-secondary); }
+
+/* Delete Btn on Card */
+.delete-btn {
+    display: none;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: white;
+    border: 1px solid var(--border-color);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: #ef4444;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.2s;
+    font-size: 16px;
+    line-height: 1;
+}
+.delete-btn:hover {
+    background: #fee2e2;
+    border-color: #fecaca;
+    transform: scale(1.1);
+}
+.admin-mode .delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
