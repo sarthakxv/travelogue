@@ -451,3 +451,45 @@ footer a:hover {
     align-items: center;
     justify-content: center;
 }
+
+/* SKELETON LOADER STYLES */
+.skeleton {
+  background: #f0f0f0;
+  background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-text {
+  height: 1.25rem;
+  width: 100%;
+}
+
+.skeleton-title {
+  height: 2.5rem; /* Matches h1 */
+  width: 50%;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.skeleton-card {
+  height: 200px;
+  width: 100%;
+}
+
+.skeleton-item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}

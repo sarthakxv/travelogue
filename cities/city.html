@@ -13,7 +13,7 @@
     <main>
         <header>
             <a href="../index.html" class="back-link">← Back to Map</a>
-            <h1 id="cityName">Loading...</h1>
+            <h1 id="cityName"><div class="skeleton skeleton-title"></div></h1>
             <p class="subtitle">Travel Itinerary</p>
         </header>
 
@@ -27,7 +27,12 @@
             <button class="filter-btn" data-filter="beach">Beach</button>
         </div>
 
-        <div class="grid" id="cardGrid"></div>
+        <div class="grid" id="cardGrid">
+            <div class="card skeleton skeleton-card"></div>
+            <div class="card skeleton skeleton-card"></div>
+            <div class="card skeleton skeleton-card"></div>
+            <div class="card skeleton skeleton-card"></div>
+        </div>
     </main>
 
     <!-- Add Place Modal -->
