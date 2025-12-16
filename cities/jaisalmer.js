@@ -1,21 +1,9 @@
-const places = [
-  {
-    name: "Jaisalmer Fort",
-    type: "sightseeing",
-    desc: "A living fort made of yellow sandstone."
-  },
-  {
-    name: "Patwon Ki Haveli",
-    type: "sightseeing",
-    desc: "A cluster of five havelis of unique architecture."
-  },
-  {
-    name: "Sam Sand Dunes",
-    type: "sightseeing",
-    desc: "Desert dunes perfect for camel safaris."
-  }
-];
-
+import { fetchPlaces } from "./supabaseClient.js";
 import { initPage } from "./utils.js";
 
-initPage(places, "Jaisalmer");
+// const places = [ ... ] // Moved to Supabase
+
+(async () => {
+    const places = await fetchPlaces("Jaisalmer");
+    initPage(places, "Jaisalmer");
+})();
