@@ -39,19 +39,21 @@
     <div id="addPlaceModal" class="modal-overlay">
         <div class="modal">
             <h2>Add New Place</h2>
-            <input type="text" id="newPlaceName" placeholder="Name">
-            <select id="newPlaceType">
-                <option value="sightseeing">Sightseeing</option>
-                <option value="food">Food</option>
-                <option value="bar">Bar</option>
-                <option value="hotel">Stay</option>
-                <option value="shopping">Shopping</option>
-                <option value="beach">Beach</option>
-            </select>
-            <textarea id="newPlaceDesc" placeholder="Description" rows="3"></textarea>
-            <div class="modal-buttons">
-                <button onclick="closeModal('addPlaceModal')" class="btn-secondary">Cancel</button>
-                <button id="savePlaceBtn" class="btn-primary">Save</button>
+            <div class="modal-content">
+                <input type="text" id="newPlaceName" placeholder="Name">
+                <select id="newPlaceType">
+                    <option value="sightseeing">Sightseeing</option>
+                    <option value="food">Food</option>
+                    <option value="bar">Bar</option>
+                    <option value="hotel">Stay</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="beach">Beach</option>
+                </select>
+                <textarea id="newPlaceDesc" placeholder="Description" rows="3"></textarea>
+                <div class="modal-buttons">
+                    <button onclick="closeModal('addPlaceModal')" class="btn-secondary">Cancel</button>
+                    <button id="savePlaceBtn" class="btn-primary">Save</button>
+                </div>
             </div>
         </div>
     </div>

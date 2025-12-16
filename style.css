@@ -293,6 +293,12 @@ footer a:hover {
   border-color: var(--text-primary);
 }
 
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 /* Modals */
 .modal-overlay {
   position: fixed;
